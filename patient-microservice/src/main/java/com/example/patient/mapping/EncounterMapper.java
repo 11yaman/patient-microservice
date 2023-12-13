@@ -5,7 +5,7 @@ import com.example.patient.model.Encounter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-//TODO
+
 @Component
 public class EncounterMapper implements StrategyMapper<Encounter, EncounterDto> {
     @Override

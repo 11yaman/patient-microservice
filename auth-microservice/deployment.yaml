@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-auth-depl
+spec:
+  selector:
+    matchLabels:
+      app: springboot-auth
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springboot-auth
+    spec:
+      containers:
+        - name: springboot-auth
+          image: yamanjkk/springboot-auth
+          ports:
+            - containerPort: 8081
+          env:   # Setting Enviornmental Variables
+            - name: DB_USERNAME  # Setting Database username from Secret
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets-admin
+                  key :  username
+
+            - name: DB_PASSWORD # Setting Database password from Secret
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets-admin
+                  key :  password
+
+            - name: spring.datasource.url
+              value: "jdbc:mysql://mysql-service/JournalSystemDB?allowPublicKeyRetrieval=true&useSSL=false"
+
+---
+
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: springboot-auth-service
+spec:
+  selector:
+    app: springboot-auth
+  ports:
+    - protocol: "TCP"
+      port: 8081 # The port that the service is running on in the cluster
+      targetPort: 8081 # The port exposed by the service
+  type: NodePort # type of the service.

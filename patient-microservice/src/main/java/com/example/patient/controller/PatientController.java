@@ -18,9 +18,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
-@RequestMapping("/api/v1/patients")
+@CrossOrigin
 public class PatientController {
     private final PatientService patientService;
     private final StrategyMapper<Patient, PatientDto> patientMapper;
@@ -37,9 +36,10 @@ public class PatientController {
         this.userMapper = userMapper;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/api/v1/patients/register")
     public ResponseEntity<UserDto> registerPatient(@RequestBody RegisterRequest registerRequest) {
         try {
+            System.out.println("Test Register");
             if(registerRequest.email().isBlank() || registerRequest.password().isBlank() ||
                     registerRequest.firstName().isBlank() || registerRequest.lastName().isBlank() ||
                     registerRequest.birthDate() == null)
@@ -58,7 +58,7 @@ public class PatientController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/patients/{id}")
     public ResponseEntity<PatientDto> getPatient(Authentication authentication, @PathVariable Long id) {
         if(!userService.isEmployeeOrResourceOwner(authentication, id))
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -76,7 +76,7 @@ public class PatientController {
         }
     }
 
-    @GetMapping("/list")
+    @GetMapping("/api/v1/patients/list")
     @PreAuthorize("hasAuthority('EMPLOYEE')")
     public List<PatientDto> getAllPatients() {
         return patientMapper.mapAll(patientService.getAllPatients());

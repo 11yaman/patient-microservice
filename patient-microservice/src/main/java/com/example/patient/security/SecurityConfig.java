@@ -2,6 +2,7 @@ package com.example.patient.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -19,18 +20,18 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests((authorize) -> authorize
-                    .requestMatchers("/api/v1/auth/**", "/error").permitAll()
-                    .anyRequest().authenticated()
-            )
-            .httpBasic(Customizer.withDefaults())
-            .formLogin(Customizer.withDefaults())
-            .cors(Customizer.withDefaults());
-        return http.build();
-    }
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+            http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/api/v1/patients/register").permitAll()
+                .requestMatchers("/error").permitAll()
+                .anyRequest().authenticated()
+                )
+                    .cors(Customizer.withDefaults())
+                    .httpBasic(Customizer.withDefaults());
+            return http.build();
+        }
 
     @Bean
     public UserDetailsService userDetailsService() {

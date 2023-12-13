@@ -26,9 +26,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User authenticate(String username, String password) {
         try{
-            Authentication authenticationResponse = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(username, password)
-            );
+            Authentication authenticationResponse = authenticationManager
+                    .authenticate(
+                            new UsernamePasswordAuthenticationToken(username, password)
+                    );
             SecurityContextHolder.getContext().setAuthentication(authenticationResponse);
             return getUserByUsername(username);
         } catch (AuthenticationException e) {

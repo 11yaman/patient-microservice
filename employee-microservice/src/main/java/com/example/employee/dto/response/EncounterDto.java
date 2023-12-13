@@ -1,4 +1,4 @@
-package com.example.patient.dto.response;
+package com.example.employee.dto.response;
 
 import java.time.LocalDateTime;
 

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-patient-depl
+spec:
+  selector:
+    matchLabels:
+      app: springboot-patient
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springboot-patient
+    spec:
+      containers:
+        - name: springboot-patient
+          image: yamanjkk/springboot-patient
+          ports:
+            - containerPort: 8083
+          env:   # Setting Enviornmental Variables
+            - name: DB_USERNAME  # Setting Database username from Secret
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets-admin
+                  key :  username
+
+            - name: DB_PASSWORD # Setting Database password from Secret
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets-admin
+                  key :  password
+
+            - name: spring.datasource.url
+              value: "jdbc:mysql://mysql-service/JournalSystemDB?allowPublicKeyRetrieval=true&useSSL=false"
+
+---
+
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: springboot-patient-service
+spec:
+  selector:
+    app: springboot-patient
+  ports:
+    - protocol: "TCP"
+      port: 8083 # The port that the service is running on in the cluster
+      targetPort: 8083 # The port exposed by the service
+  type: NodePort # type of the service.
