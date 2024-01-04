@@ -47,7 +47,8 @@ public class MessageController {
     public ResponseEntity<MessageDto> createMessageByPatient(@RequestBody MessageRequest messageRequest,
                                                              Authentication authentication) {
         try {
-            User loggedInUser = userService.getUserByUsername(authentication.getName());
+            String username = userService.getAuthenticatedUsername(authentication);
+            User loggedInUser = userService.getUserByUsername(username);
             Message createdMessage = messageService.createMessage(
                     new Message(messageRequest.content(), loggedInUser));
             return new ResponseEntity<>(messageMapper.map(createdMessage), HttpStatus.CREATED);
@@ -58,14 +59,11 @@ public class MessageController {
     }
 
     @GetMapping("/messages/{messageId}")
+    @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isMessageOwner(authentication, #messageId)")
     public ResponseEntity<MessageWithRepliesDto> getMessageWithReplies(@PathVariable Long messageId,
                                                                 Authentication authentication) {
         try {
             Message message = messageService.getMessageWithRepliesById(messageId);
-
-            if(!userService.isEmployeeOrResourceOwner(authentication, message.getSender().getId()))
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-
             return ResponseEntity.ok(
                     new MessageWithRepliesDto(message.getId(), message.getContent(), message.getDateTime(),
                             userMapper.map(message.getSender()), message.getStatus(),
@@ -76,6 +74,7 @@ public class MessageController {
     }
 
     @PostMapping("/messages/{messageId}/reply")
+    @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isMessageOwner(authentication, #messageId)")
     public ResponseEntity<MessageWithRepliesDto> replyToMessage(
             @PathVariable Long messageId,
             @RequestBody MessageRequest replyRequest,
@@ -83,10 +82,8 @@ public class MessageController {
     ) {
         try {
             Message parentMessage = messageService.getMessageWithRepliesById(messageId);
-            User loggedInUser = userService.getUserByUsername(authentication.getName());
-
-            if(!userService.isEmployeeOrResourceOwner(authentication, parentMessage.getSender().getId()))
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            String username = userService.getAuthenticatedUsername(authentication);
+            User loggedInUser = userService.getUserByUsername(username);
 
             Message repliedMessage = messageService.replyToMessage(parentMessage,
                     new Reply(replyRequest.content(), loggedInUser));
@@ -100,11 +97,9 @@ public class MessageController {
     }
 
     @RequestMapping("/patients/{patientId}/messages/list")
+    @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isPatient(authentication, #patientId)")
     public ResponseEntity<List<MessageDto>> getPatientMessages(Authentication authentication,
                                                                 @PathVariable Long patientId){
-        if(!userService.isEmployeeOrResourceOwner(authentication, patientId))
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-
         try {
             List<Message> userMessages;
             if (userService.isEmployee(authentication))

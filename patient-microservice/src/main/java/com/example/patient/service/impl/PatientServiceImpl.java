@@ -5,6 +5,7 @@ import com.example.patient.model.Patient;
 import com.example.patient.repository.PatientRepository;
 import com.example.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

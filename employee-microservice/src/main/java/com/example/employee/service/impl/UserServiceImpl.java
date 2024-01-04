@@ -4,11 +4,11 @@ import com.example.employee.exception.DuplicatedUserInfoException;
 import com.example.employee.exception.NotFoundException;
 import com.example.employee.model.User;
 import com.example.employee.repository.UserRepository;
-import com.example.employee.security.UserDetailsImpl;
 import com.example.employee.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,7 +42,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Long getAuthenticatedUserId(Authentication authentication) {
-        return ((UserDetailsImpl) authentication.getPrincipal()).getId();
+        String username = getAuthenticatedUsername(authentication);
+        return userRepository.getIdByUsername(username);
+    }
+
+    @Override
+    public String getAuthenticatedUsername(Authentication authentication) {
+        Jwt jwt = (Jwt) authentication.getPrincipal();
+        return jwt.getClaim("preferred_username");
     }
 
     @Override

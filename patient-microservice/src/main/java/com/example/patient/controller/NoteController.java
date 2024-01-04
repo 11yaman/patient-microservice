@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -48,12 +49,13 @@ public class NoteController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('EMPLOYEE')")
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<NoteDto> createNoteByEmployee(Authentication authentication,
                                                         @RequestBody NoteRequest noteRequest,
                                                         @PathVariable Long patientId) {
         try {
-            Employee employee = (Employee) userService.getUserByUsername(authentication.getName());
+            String username = userService.getAuthenticatedUsername(authentication);
+            Employee employee = (Employee) userService.getUserByUsername(username);
             Patient patient = patientService.getPatientById(patientId);
             Encounter encounter = encounterService.getEncounterById(noteRequest.encounterId());
 
@@ -67,15 +69,12 @@ public class NoteController {
     }
 
     @GetMapping("{noteId}")
+    @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isNoteOwner(authentication, #noteId)")
     public ResponseEntity<NoteDto> getNote(Authentication authentication,
                                            @PathVariable Long noteId,
                                            @PathVariable Long patientId) {
         try {
             Note note = noteService.getNoteById(noteId);
-
-            if(!note.getPatient().getId().equals(patientId) ||
-                    !userService.isEmployeeOrResourceOwner(authentication, patientId))
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 
             return ResponseEntity.ok(
                     new NoteDto(note.getId(), note.getText(), note.getDateTimeCreated(),
@@ -89,11 +88,9 @@ public class NoteController {
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isPatient(authentication, #patientId)")
     public ResponseEntity<List<NoteDto>> getPatientNotes(Authentication authentication,
                                                          @PathVariable Long patientId){
-        if(!userService.isEmployeeOrResourceOwner(authentication, patientId))
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-
         try {
             List<Note> userNotes;
             if (userService.isEmployee(authentication))

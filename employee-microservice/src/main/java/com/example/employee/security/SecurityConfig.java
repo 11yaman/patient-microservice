@@ -1,7 +1,9 @@
 package com.example.employee.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -10,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +23,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+    @Autowired
+    JwtAuthConverter jwtAuthConverter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
@@ -30,12 +36,13 @@ public class SecurityConfig {
             .httpBasic(Customizer.withDefaults())
             .formLogin(Customizer.withDefaults())
             .cors(Customizer.withDefaults());
+        http.oauth2ResourceServer (t-> {
+            t.jwt (jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwtAuthConverter));
+        });
+        http.sessionManagement (
+                t -> t.sessionCreationPolicy (SessionCreationPolicy.STATELESS)
+        );
         return http.build();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImpl();
     }
 
     @Bean
@@ -49,11 +56,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        return daoAuthenticationProvider;
+    public DefaultMethodSecurityExpressionHandler msecurity() {
+        DefaultMethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler =
+                new DefaultMethodSecurityExpressionHandler();
+        defaultMethodSecurityExpressionHandler.setDefaultRolePrefix("");
+        return defaultMethodSecurityExpressionHandler;
     }
 
 }
