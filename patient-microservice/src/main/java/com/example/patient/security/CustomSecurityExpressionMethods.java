@@ -38,6 +38,8 @@ public class CustomSecurityExpressionMethods {
     }
 
     private boolean isResourceOwner(Authentication authentication, Long patientId) {
+        if(patientId==null)
+            return true;
         Jwt jwt = (Jwt) authentication.getPrincipal();
         String username = jwt.getClaim("preferred_username");
         Patient patient;

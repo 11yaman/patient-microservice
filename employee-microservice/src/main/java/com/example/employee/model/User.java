@@ -15,8 +15,8 @@ public abstract class User {
     private String lastName;
     @Column(unique = true)
     private String username;
+    @Transient
     private String password;
-
     private LocalDate birthDate;
     private Role role;
 
@@ -24,14 +24,16 @@ public abstract class User {
 
     public User() {
     }
-    public User(Long id,
+    public User(@NonNull Long id,
                 @NonNull String username,
+                @NonNull String password,
                 @NonNull String firstName,
                 @NonNull String lastName,
                 @NonNull LocalDate birthDate,
                 @NonNull Role role) {
         this.id = id;
         this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -85,10 +87,12 @@ public abstract class User {
         this.username = username;
     }
 
+    @Transient
     public String getPassword() {
         return password;
     }
 
+    @Transient
     public void setPassword(String password) {
         this.password = password;
     }

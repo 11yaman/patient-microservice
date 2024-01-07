@@ -5,49 +5,99 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c034a7-391b-4e9d-892f-bee6c73cf79e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/kubernetes-settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/db-secrets.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/deployment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/AuthApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/config/UserDetailsImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/dto/request/AuthenticateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/dto/response/UserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/exception/DuplicatedUserInfoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/exception/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/mapping/StrategyMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/mapping/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/repository/AuthRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/service/impl/UserDetailsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/java/com/example/auth/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/src/test/java/com/example/auth/AuthAppApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/auth-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/auth-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/AuthApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/config/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/config/UserDetailsImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/controller/AuthController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/dto/request/AuthenticateRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/dto/response/UserDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/exception/DuplicatedUserInfoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/exception/NotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/mapping/StrategyMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/mapping/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/model/User$Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/repository/AuthRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/service/impl/UserDetailsServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/classes/com/example/auth/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth-microservice/target/test-classes/com/example/auth/AuthApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/deployment-mysql.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/mysql-configMap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../db/mysql-secrets.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee-microservice/db-secrets.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee-microservice/deployment.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/security/UserDetailsImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/security/UserDetailsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/java/com/example/employee/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/src/main/resources/application.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/target/classes/application.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/security/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/model/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/model/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../employee-microservice/target/classes/com/example/employee/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/PatientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/PatientApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-secrets.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/controller/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/controller/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/controller/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/security/UserDetailsImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/security/UserDetailsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/service/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/service/impl/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/service/impl/PatientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/security/CustomSecurityExpressionMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/security/CustomSecurityExpressionMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/patient/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/patient/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/PatientApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/PatientApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/controller/MessageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/controller/NoteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/controller/NoteController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/controller/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/controller/PatientController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/security/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/service/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/service/PatientService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/service/impl/PatientServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/service/impl/PatientServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/patient/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/patient/service/impl/UserServiceImpl.class" afterDir="false" />
     </list>
     <list id="40008d40-d240-468f-90e0-5e6dcc3bc570" name="Changes by Noor" comment="Changes by Noor" />
@@ -62,6 +112,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="AnnotationType" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -127,6 +178,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -166,8 +219,14 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yaman\GitHub\PatientJournalSystem2\patient-microservice\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.backend" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.patient.repository" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.patient.security" />
@@ -192,7 +251,38 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.PatientApplication">
+    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="patient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.patient.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.patient.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.example.patient.repository.UserRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.checkIfPatientCreated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="patient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.patient.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.patient.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.example.patient.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="checkIfPatientCreated" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PatientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="patient" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.patient.PatientApplication" />
@@ -206,6 +296,12 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.UserRepositoryTest.checkIfPatientCreated" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -272,7 +368,14 @@
       <workItem from="1702425432655" duration="245000" />
       <workItem from="1704287382543" duration="10755000" />
       <workItem from="1704311687350" duration="4000" />
-      <workItem from="1704363696563" duration="15397000" />
+      <workItem from="1704363696563" duration="16604000" />
+      <workItem from="1704395125608" duration="2000" />
+      <workItem from="1704395490371" duration="710000" />
+      <workItem from="1704497571275" duration="595000" />
+      <workItem from="1704500271463" duration="3251000" />
+      <workItem from="1704546364705" duration="13000" />
+      <workItem from="1704549084313" duration="1965000" />
+      <workItem from="1704623256620" duration="4391000" />
     </task>
     <task id="LOCAL−00001" summary="Messages added">
       <option name="closed" value="true" />

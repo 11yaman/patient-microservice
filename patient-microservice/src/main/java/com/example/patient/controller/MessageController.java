@@ -22,8 +22,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class MessageController {
     private final MessageService messageService;
@@ -96,10 +96,10 @@ public class MessageController {
         }
     }
 
-    @RequestMapping("/patients/{patientId}/messages/list")
+    @RequestMapping("/patients/messages/list")
     @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isPatient(authentication, #patientId)")
     public ResponseEntity<List<MessageDto>> getPatientMessages(Authentication authentication,
-                                                                @PathVariable Long patientId){
+                                                                @RequestParam(required = false) Long patientId){
         try {
             List<Message> userMessages;
             if (userService.isEmployee(authentication))

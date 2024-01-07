@@ -15,8 +15,8 @@ public abstract class User {
     private String lastName;
     @Column(unique = true)
     private String username;
+    @Transient
     private String password;
-
     private LocalDate birthDate;
     private Role role;
 
@@ -24,7 +24,7 @@ public abstract class User {
 
     public User() {
     }
-    public User(Long id,
+    public User(@NonNull Long id,
                 @NonNull String username,
                 @NonNull String firstName,
                 @NonNull String lastName,
@@ -85,10 +85,11 @@ public abstract class User {
         this.username = username;
     }
 
+    @Transient
     public String getPassword() {
         return password;
     }
-
+    @Transient
     public void setPassword(String password) {
         this.password = password;
     }

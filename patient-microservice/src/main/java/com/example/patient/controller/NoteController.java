@@ -23,7 +23,6 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/v1/patients/{patientId}/notes")
 public class NoteController {
     private final UserService userService;
     private final StrategyMapper<User, UserDto> userMapper;
@@ -48,11 +47,11 @@ public class NoteController {
         this.encounterService = encounterService;
     }
 
-    @PostMapping
+    @PostMapping("/api/v1/patients/notes")
     @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<NoteDto> createNoteByEmployee(Authentication authentication,
                                                         @RequestBody NoteRequest noteRequest,
-                                                        @PathVariable Long patientId) {
+                                                        @RequestParam Long patientId) {
         try {
             String username = userService.getAuthenticatedUsername(authentication);
             Employee employee = (Employee) userService.getUserByUsername(username);
@@ -63,16 +62,14 @@ public class NoteController {
                     new Note(noteRequest.text(), employee, patient, encounter));
             return new ResponseEntity<>(noteMapper.map(createdNote), HttpStatus.CREATED);
         } catch (Exception e){
-            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Note could not be created");
         }
     }
 
-    @GetMapping("{noteId}")
+    @GetMapping("/api/v1/patients/notes/{noteId}")
     @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isNoteOwner(authentication, #noteId)")
     public ResponseEntity<NoteDto> getNote(Authentication authentication,
-                                           @PathVariable Long noteId,
-                                           @PathVariable Long patientId) {
+                                           @PathVariable Long noteId) {
         try {
             Note note = noteService.getNoteById(noteId);
 
@@ -87,10 +84,10 @@ public class NoteController {
         }
     }
 
-    @GetMapping("/list")
+    @GetMapping("/api/v1/patients/notes/list")
     @PreAuthorize("hasRole('EMPLOYEE') or @customSecurityExpressionMethods.isPatient(authentication, #patientId)")
     public ResponseEntity<List<NoteDto>> getPatientNotes(Authentication authentication,
-                                                         @PathVariable Long patientId){
+                                                         @RequestParam(required = false) Long patientId){
         try {
             List<Note> userNotes;
             if (userService.isEmployee(authentication))
